@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title property.title %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <h3 class="text-muted">{{ property.title}}</h3>
+                    <h4>{{ property.rooms}} - pièces {{ property.surface}} m²</h4>
+                    <div class="text-primary" style="font-size: 4em;">{{ property.formattedPrice}} €</div>
+                    <a href="#" class="btn btn-primary btn-block">Contacter l'agence</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <p>
+            {{ property.description | nl2br }}{# Saut de ligne automatiquement s'il y a un saut de ligne dans le text #}
+        </p>
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="text-success">Caracteristiques</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Surface habitable</td>
+                        <td>{{ property.surface }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pièces</td>
+                        <td>{{ property.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chambres</td>
+                        <td>{{ property.bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Etage</td>
+                        <td>{{ property.floor }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chauffage</td>
+                        <td>{{ property.heatType }}</td>
+                    </tr>
+                </table>
+            </div>    
+            <div class="col-md-4">
+                <h2 class="text-success">Spécificités</h2>
+            </div>    
+        </div>
+    </div>
+{% endblock %}

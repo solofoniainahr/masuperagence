@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title 'Page d\'acceuil' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1 class="">Jumbotron heading</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="container">
+        <h2>Les dernier biens </h2>
+        <div class="row flex">
+            {% for property in properties %}
+                <div class="col-3">
+                    <div class="card" style="width: 18rem;">
+                        <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
+                        <!--img src="..." class="card-img-top" alt="..."-->
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('app_property_show', {'id': property.id, 'slug': property.slug}) }}">{{ property.title }}</a>
+                            </h5>
+                            <!--h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6-->
+                            <p class="card-text">{{ property.city }} ({{ property.postalCode}})</p>
+                            <div class="text-primary" style="font-size: 1.3rem;">
+                                <strong>
+                                    {#{ property.price | number_format(0, '', ' ')} €#}
+                                    {{ property.formattedPrice }} €
+                                </strong>
+                            </div>
+                            <!--a href="#" class="card-link">Card link</!--a>
+                            <a-- href="#" class="btn btn-primary">Card button</a-->
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>    
+    </div>
+    
+{% endblock %}
