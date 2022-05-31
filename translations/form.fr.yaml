@@ -1,0 +1,13 @@
+property:
+  title: Titre
+  city: Ville
+  price: Prix
+  rooms: Pièces
+  bedrooms: Chambres
+  floor: Etage
+  heat: Chauffage
+  postal_code: 'Code postale'
+  sold: Vendu
+  address: Addresse
+
+

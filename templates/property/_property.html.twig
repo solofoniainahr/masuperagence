@@ -1,0 +1,16 @@
+<div class="card mb-4">
+    <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
+    <!--img src="..." class="card-img-top" alt="..."-->
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="{{ path('app_property_show', {'slug': property.slug, 'id': property.id}) }}" class="">{{ property.title}}</a>
+        </h5>
+        <p class="card-text text-left">
+            {{ property.description | nl2br }}
+        </p>
+        <p class="card-text text-left text-muted">{{ property.city }}({{ property.postalCode}}) </p>
+        <div class="text-primary" style="font-size: 2rem; font-weight: bold;">
+            {{ property.formattedPrice }} €
+        </div>
+    </div>
+</div>

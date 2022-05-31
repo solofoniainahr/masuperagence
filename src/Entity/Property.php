@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Cocur\Slugify\Slugify;
 
 /**
@@ -13,8 +14,8 @@ use Cocur\Slugify\Slugify;
 class Property
 {
     const HEAT = [
-        0 => 'Electric',
-        1 => 'Gaz'
+        1 => 'Electric',
+        2 => 'Gaz'
     ];
 
     public function __construct()
@@ -40,6 +41,9 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * 
+     * @Assert\Range(min=10, max=400, notInRangeMessage = "La surface doit être entre {{ min }}cm et {{ max }}cm ",
+)
      */
     private $surface;
 
@@ -80,6 +84,8 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+    * @Assert\Regex("/^[0-9]{5}$/", message="Veuillez entrer cinq chiffre")
      */
     private $postal_code;
 

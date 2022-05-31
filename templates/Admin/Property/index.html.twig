@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% block title 'Gerer des biens' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gerer les biens</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Action</th>
+                </tr>
+                {% for property in properties %}
+                    <tr>
+                        <td>{{ property.title}}</td>
+                        <td>
+                            <a href="{{ path('app_admin_edit', {'id': property.id}) }}" class="btn btn-secondary">Editer</a>
+                            <a class="m-3 btn btn-danger"
+							   href=""
+							   onclick="event.preventDefault(); confirm('Are you sure ??') && document.getElementById('js-property-delete-form-{{ property.id}}').submit();"
+							>&times Delete</a>
+
+							<form id="js-property-delete-form-{{ property.id }}" action="{{ path('app_admin_delete', {'id': property.id}) }}" method="POST" style="display:none;">
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('property_deletion_' ~ property.id) }}" />
+								<input type="hidden" name="_method" value="DELETE" />
+							</form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </thead>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('app_admin_create') }}" class="btn btn-primary">Créer nouveau bien</a>
+        </div>
+    </div>
+{% endblock %}
