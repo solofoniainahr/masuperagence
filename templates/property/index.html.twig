@@ -3,9 +3,28 @@
 {% block title 'Tous nos biens' %}
 
 {% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(seacrhForm) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(seacrhForm.maxPrice) }}
+                </div>
+                <div class="col">
+                    {{ form_row(seacrhForm.minSurface) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block">Rechercher</div>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(seacrhForm) }}
+        </div>
+    </div>
 <div class="container text-muted text-center mt-4">
-    <h1>Voir tous nos biens</h1>
-    <div class="row">
+    <h1 class="mb-3">Voir tous nos biens</h1>
+    <div class="row mb-4">
         {% for property in properties %}
             <div class="col-md-3">
                 {% include "property/_property.html.twig" with {'property': property} %}
