@@ -7,3 +7,13 @@
        {{ include('Admin/Property/_form.html.twig', {form: form, button: 'Editer'}) }}
     </div>
 {% endblock %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}

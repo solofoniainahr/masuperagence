@@ -2,13 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Option;
 use App\Entity\Property;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PropertyType extends AbstractType
 {
@@ -40,6 +42,12 @@ class PropertyType extends AbstractType
             ->add('heat', ChoiceType::class, [
                 'choices' => $this->getChoicesHeat(),
                 'label' => $this->translator->trans('property.heat')
+            ])
+            ->add('options', EntityType::class, [
+              'label'     =>  'Options',
+              'class'     =>  Option::class,
+              'multiple'  =>  true,
+              //'expanded'  => true
             ])
             ->add('city', null, [
                 'label' => $this->translator->trans('property.city')

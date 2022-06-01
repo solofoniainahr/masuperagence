@@ -17,6 +17,7 @@
         <div class="col-md-3">{{ form_row(form.postal_code) }}</div>
         <div class="col-md-1">{{ form_row(form.sold) }}</div>
     </div>
+    {{ form_rest(form) }}
     <div class="form-group">
         <button type="submit" class="btn btn-primary" >{{ button | default('Enregistrer de nouveau bien') }}</button>
     </div>

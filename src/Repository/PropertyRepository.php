@@ -49,6 +49,7 @@ class PropertyRepository extends ServiceEntityRepository
      */
     public function findAllVisible(PropertySearch $search): Query
     {
+        //dd($search->getOptions());
         $query = $this->findVisibleQuery();
         if ( $search->getMaxPrice() ) {
             $query = $query->where('p.price < :maxPrice')
@@ -58,6 +59,19 @@ class PropertyRepository extends ServiceEntityRepository
             $query = $query->andWhere('p.surface > :minSurface')
             ->setParameter('minSurface', $search->getMinSurface());
         }
+        if( count($search->getOptions()) > 0 )
+        {
+            $k = 0;
+            //foreach ($search->getOptions() as $k => $option) {
+            foreach ($search->getOptions() as $option) {//On enleve le $k(index) pour eviter le mal intention de l"user sur l'url
+                $k ++;
+                $query = $query->andWhere(":option$k MEMBER OF p.options")//POur  la relation ManyToMany
+                //$query = $query->andWhere('p.options IN (:options)')
+                               //->setParameter("options", $search->getOptions());
+                               ->setParameter("option$k", $option);
+            }
+        }
+
 
         return $query->getQuery();
         //->getResult();

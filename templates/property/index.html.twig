@@ -8,10 +8,13 @@
             {{ form_start(seacrhForm) }}
             <div class="form-row align-items-end">
                 <div class="col">
+                    {{ form_row(seacrhForm.minSurface) }}
+                </div>
+                <div class="col">
                     {{ form_row(seacrhForm.maxPrice) }}
                 </div>
                 <div class="col">
-                    {{ form_row(seacrhForm.minSurface) }}
+                    {{ form_row(seacrhForm.options) }}
                 </div>
                 <div class="col">
                     <div class="form-group">

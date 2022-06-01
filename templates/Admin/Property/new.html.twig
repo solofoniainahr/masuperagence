@@ -1,9 +1,16 @@
 {% extends "base.html.twig" %}
-    {% block title  'Ajouter nouveau du bien'%}
-    
-    {% block body %}
-        <div class="container mt-4">
-            <h1 class="text-success">Ajouter du nouveau bien</h1>
-           {{ include('Admin/Property/_form.html.twig', {form: form}) }}
-        </div>
-    {% endblock %}
+{% block title  'Ajouter nouveau du bien'%}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-success">Ajouter du nouveau bien</h1>
+        {{ include('Admin/Property/_form.html.twig', {form: form}) }}
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script >
+        $('select').select2();
+    </script>
+{% endblock %}
